@@ -4,9 +4,10 @@
         <title>App</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     </head>
-    <body>
-        <main id="root" class="login">
+    <body class="m-0 p-0 bg-[white]">
+        <main id="root" class="flex flex-col items-center justify-center p-[50px]">
 
         </main>
         <script type="module">
@@ -27,11 +28,11 @@
                 render(){
                     // Virtual DOM
 
-                    return  h('section', { class : 'loginFormContainer' }, [
-                                h('h1', 'Connexion'),
-                                h('form', { onsubmit: this.submitForm }, [
-                                    h('article', [
-                                        h('label', { for : 'username' }, 'Nom'),
+                    return  h('section', { class : 'flex flex-col w-[30vw] p-[50px] gap-[25px] bg-[rgb(250,_250,_250)] rounded-[20px]' }, [
+                                h('h1', { class : 'text-[25px] font-medium text-center m-0' }, 'Connexion'),
+                                h('form', { onsubmit: this.submitForm, class : 'flex flex-col m-0 gap-[10px]' }, [
+                                    h('article', { class : 'flex flex-col gap-[5px]' }, [
+                                        h('label', { for : 'username', class : 'font-medium' }, 'Nom'),
                                         h('input', {
                                             type : 'text',
                                             id : 'username',
@@ -39,11 +40,12 @@
                                             maxlength : '255',
                                             required : 'required',
                                             value : this.username,
-                                            oninput: event => { this.username = event.target.value }
+                                            oninput: event => { this.username = event.target.value },
+                                            class : 'bg-[#ffffffbf] border-[1px] border-[solid] border-[#f5f5f5] rounded-[10px] p-[10px] resize-y'
                                         })
                                     ]),
-                                    h('article', [
-                                        h('label', { for : 'password' }, 'Mot de passe'),
+                                    h('article', { class : 'flex flex-col gap-[5px]' }, [
+                                        h('label', { for : 'password', class : 'font-medium' }, 'Mot de passe'),
                                         h('input', {
                                             type : 'password',
                                             id : 'password',
@@ -51,10 +53,11 @@
                                             maxlength : '255',
                                             required : 'required',
                                             value : this.password,
-                                            oninput: event => { this.password = event.target.value }
+                                            oninput: event => { this.password = event.target.value },
+                                            class : 'bg-[#ffffffbf] border-[1px] border-[solid] border-[#f5f5f5] rounded-[10px] p-[10px] resize-y'
                                         })
                                     ]),
-                                    h('button', { type : 'submit' }, 'Se connecter')
+                                    h('button', { type : 'submit', class : 'px-[20px] py-[10px] bg-[black] text-[white] border-[none] cursor-pointer rounded-[50px] mt-[20px] hover:bg-[rgb(0,_150,_255)] hover:[transition:0.25s] active:bg-[rgb(0,_125,_255)] active:scale-[0.95] active:[transition:0.25s]' }, 'Se connecter')
                                 ]),
                             ]);
                 }
