@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr-FR" dir="ltr">
+    <head>
+        <title>App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main id="root" class="login">
+
+        </main>
+        <script type="module">
+            import { h, createApp } from "./node_modules/vue/dist/vue.esm-browser.prod.js"
+
+            const Login = {
+                data(){
+                    return {
+                        username : "",
+                        password : ""
+                    }
+                },
+                methods: {
+                    submitForm() {
+                        alert(`Nom : ${this.username}\nMot de passe : ${this.password}`);
+                    }
+                },
+                render(){
+                    // Virtual DOM
+
+                    return  h('section', { class : 'loginFormContainer' }, [
+                                h('h1', 'Connexion'),
+                                h('form', { onsubmit: this.submitForm }, [
+                                    h('article', [
+                                        h('label', { for : 'username' }, 'Nom'),
+                                        h('input', {
+                                            type : 'text',
+                                            id : 'username',
+                                            name : 'username',
+                                            maxlength : '255',
+                                            required : 'required',
+                                            value : this.username,
+                                            oninput: event => { this.username = event.target.value }
+                                        })
+                                    ]),
+                                    h('article', [
+                                        h('label', { for : 'password' }, 'Mot de passe'),
+                                        h('input', {
+                                            type : 'password',
+                                            id : 'password',
+                                            name : 'password',
+                                            maxlength : '255',
+                                            required : 'required',
+                                            value : this.password,
+                                            oninput: event => { this.password = event.target.value }
+                                        })
+                                    ]),
+                                    h('button', { type : 'submit' }, 'Se connecter')
+                                ]),
+                            ]);
+                }
+            }
+
+            createApp(Login).mount('#root')
+        </script>
+    </body>
+</html>
